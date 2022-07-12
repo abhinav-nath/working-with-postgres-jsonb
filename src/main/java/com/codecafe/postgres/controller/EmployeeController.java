@@ -5,11 +5,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codecafe.postgres.dto.EmployeeDTO;
+import com.codecafe.postgres.entity.Address;
 import com.codecafe.postgres.entity.Employee;
 import com.codecafe.postgres.service.EmployeeService;
 
@@ -37,6 +39,17 @@ public class EmployeeController {
     }
 
     return new ResponseEntity<>(employee, HttpStatus.CREATED);
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<Employee> updateAddress(@PathVariable Long id, @RequestBody Address address) {
+    Employee employee = employeeService.updateAddress(id, address);
+
+    if (employee == null) {
+      throw new RuntimeException("Address could not be updated");
+    }
+
+    return new ResponseEntity<>(employee, HttpStatus.OK);
   }
 
 }
