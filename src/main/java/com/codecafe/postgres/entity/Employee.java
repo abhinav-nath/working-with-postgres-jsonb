@@ -14,7 +14,7 @@ import lombok.Setter;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
-import static javax.persistence.GenerationType.SEQUENCE;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Getter
 @Setter
@@ -24,7 +24,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 public class Employee {
 
   @Id
-  @GeneratedValue(strategy = SEQUENCE)
+  @GeneratedValue(strategy = IDENTITY)
   private Integer id;
 
   @Type(type = "jsonb")

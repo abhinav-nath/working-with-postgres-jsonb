@@ -1,0 +1,20 @@
+server:
+  port: 8088
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: jdbc:postgresql://localhost:5435/testDb
+    username: testDbUser
+    password: testDbPassword
+  flyway:
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
+    schemas: "test_schema"
+    baselineOnMigrate: true
+    baseline-version: 0
