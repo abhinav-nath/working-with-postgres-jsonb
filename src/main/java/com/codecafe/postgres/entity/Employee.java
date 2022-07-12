@@ -25,7 +25,7 @@ public class Employee {
 
   @Id
   @GeneratedValue(strategy = IDENTITY)
-  private Integer id;
+  private Long id;
 
   @Type(type = "jsonb")
   @Column(columnDefinition = "jsonb")
