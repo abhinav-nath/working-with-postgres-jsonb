@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.codecafe.postgres.dto.EmployeeDTO;
 import com.codecafe.postgres.entity.Address;
 import com.codecafe.postgres.entity.Bio;
+import com.codecafe.postgres.entity.ContactInfo;
 import com.codecafe.postgres.entity.Employee;
 import com.codecafe.postgres.repository.EmployeeRepository;
 
@@ -48,6 +49,15 @@ public class EmployeeService {
     Employee existingEmployee = getEmployee(id);
     if (existingEmployee != null && existingEmployee.getBio() != null) {
       existingEmployee.getBio().setAddress(address);
+      return employeeRepository.save(existingEmployee);
+    }
+    return null;
+  }
+
+  public Employee updateContactInfo(Long id, ContactInfo contactInfo) {
+    Employee existingEmployee = getEmployee(id);
+    if (existingEmployee != null && existingEmployee.getBio() != null) {
+      existingEmployee.getBio().setContactInfo(contactInfo);
       return employeeRepository.save(existingEmployee);
     }
     return null;

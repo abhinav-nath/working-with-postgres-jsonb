@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codecafe.postgres.dto.EmployeeDTO;
 import com.codecafe.postgres.entity.Address;
+import com.codecafe.postgres.entity.ContactInfo;
 import com.codecafe.postgres.entity.Employee;
 import com.codecafe.postgres.service.EmployeeService;
 
@@ -41,12 +42,23 @@ public class EmployeeController {
     return new ResponseEntity<>(employee, HttpStatus.CREATED);
   }
 
-  @PutMapping("/{id}")
+  @PutMapping("/{id}/address")
   public ResponseEntity<Employee> updateAddress(@PathVariable Long id, @RequestBody Address address) {
     Employee employee = employeeService.updateAddress(id, address);
 
     if (employee == null) {
       throw new RuntimeException("Address could not be updated");
+    }
+
+    return new ResponseEntity<>(employee, HttpStatus.OK);
+  }
+
+  @PutMapping("/{id}/contactinfo")
+  public ResponseEntity<Employee> updateContactInfo(@PathVariable Long id, @RequestBody ContactInfo contactInfo) {
+    Employee employee = employeeService.updateContactInfo(id, contactInfo);
+
+    if (employee == null) {
+      throw new RuntimeException("ContactInfo could not be updated");
     }
 
     return new ResponseEntity<>(employee, HttpStatus.OK);
