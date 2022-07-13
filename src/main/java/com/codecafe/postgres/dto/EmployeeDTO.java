@@ -8,9 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import com.codecafe.postgres.entity.Address;
-import com.codecafe.postgres.entity.ContactInfo;
-
 @Getter
 @Setter
 @Builder
@@ -21,7 +18,5 @@ public class EmployeeDTO {
   private String firstName;
   private String lastName;
   private Date dob;
-  private Address address;
-  private ContactInfo contactInfo;
 
 }

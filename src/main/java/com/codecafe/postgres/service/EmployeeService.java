@@ -29,17 +29,10 @@ public class EmployeeService {
     Employee employee = new Employee();
     if (employeeDTO != null) {
       Bio bio = new Bio();
-      if (employeeDTO.getAddress() != null) {
-        bio.setAddress(employeeDTO.getAddress());
-      }
-      if (employeeDTO.getContactInfo() != null) {
-        bio.setContactInfo(employeeDTO.getContactInfo());
-      }
       bio.setFirstName(employeeDTO.getFirstName());
       bio.setLastName(employeeDTO.getLastName());
       bio.setDob(employeeDTO.getDob());
       employee.setBio(bio);
-
       return employeeRepository.save(employee);
     }
     return null;
