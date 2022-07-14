@@ -1,0 +1,11 @@
+Create Employee:
+
+curl -v http://localhost:8088/employees -X POST -d '{"firstName":"Jack","lastName":"Jones"}' -H "content-type:application/json"
+
+Update Address:
+
+curl -v http://localhost:8088/employees/1/address -X PUT -d '{"line1":"100 street","line2":"near xyz building","zipCode":54321}' -H "content-type:application/json"
+
+Update Contact Info:
+
+curl -v http://localhost:8088/employees/1/contactinfo -X PUT -d '{"phone":300340045005,"email":"abc@xyz.com"}' -H "content-type:application/json"
